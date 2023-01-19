@@ -5,6 +5,7 @@
 
 .container {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row-reverse;
     justify-content: space-around;
 }
@@ -12,7 +13,8 @@
 
 .grid {
     display: flex;
-    
+    max-width: 500px;
+    max-height: 500px;
 }
 
 .column {
@@ -21,7 +23,7 @@
 }
 
 .row {
-    width: 25px;
+    width: 10px;
     aspect-ratio: 1 / 1;
     background: white;
     text-align: center;
@@ -39,5 +41,11 @@
 .button-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    width: 100px;
+    height: 50px;
 }

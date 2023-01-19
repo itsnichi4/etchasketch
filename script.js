@@ -1,22 +1,26 @@
-let columns = 16;
-let rows = 16;
 let mouseValue = "click";
 let currentDrawMode = "click";
 let changeBackgroundColor;
+let squaresNumber = prompt('Input the number of squares you want for your canvas(30-60)')
+
+if (squaresNumber>60) {alert("ERROR! I SAID MIN 30 MAX 60!")
+prompt('Input the number of squares you want for your canvas(1-60)')
+}
 
 let container = document.createElement('div');
 container.className = "container"
 let grid = document.createElement('div');
 grid.className = 'grid';
-for (let i = 0; i < columns; ++i) {
+prompt
+for (let i = 0; i < squaresNumber; ++i) {
     var column = document.createElement('div'); // create columns
     column.className = 'column';
-    for (let j = 0; j < rows; ++j) {
+    for (let j = 0; j < squaresNumber; ++j) {
         let row = document.createElement('div'); // create rows
         row.className = 'row';
-        column.appendChild(row); 
+        column.appendChild(row);
     }
-    grid.appendChild(column); 
+    grid.appendChild(column);
 }
 document.body.appendChild(container);
 container.appendChild(grid)
@@ -60,7 +64,7 @@ function colorClicked() {
 }
 
 let clearDivs = document.getElementById("Button 2")
-clearDivs.onclick = function() {location.reload(true)}
+clearDivs.onclick = function () { location.reload(true) }
 
 document.getElementById("Button 3").addEventListener("click", eraserClicked)
 function eraserClicked() {
