@@ -1,5 +1,8 @@
 let columns = 16;
 let rows = 16;
+let mouseValue = "click";
+let currentDrawMode = "click";
+let changeBackgroundColor;
 
 let container = document.createElement('div');
 container.className = "container"
@@ -18,67 +21,76 @@ for (let i = 0; i < columns; ++i) {
 document.body.appendChild(container);
 container.appendChild(grid)
 
-
 let innerDiv = document.createElement('div');
 innerDiv.className = 'inner-div';
 
 let buttonContainer = document.createElement('div');
 buttonContainer.className = 'button-container';
-
-for (let i = 0; i < 3; i++) {
+buttonContainer.appendChild(document.getElementById("favcolor"))
+for (let i = 0; i < 5; i++) {
     let button = document.createElement('button');
     button.id = 'Button ' + (i + 1);
     button.className = 'button';
     buttonContainer.appendChild(button);
 }
 innerDiv.appendChild(buttonContainer);
-container.appendChild(innerDiv);
 
+container.appendChild(innerDiv);
 
 document.getElementById("Button 1").innerText = "Color";
 document.getElementById("Button 2").innerText = "Clear";
 document.getElementById("Button 3").innerText = "Eraser";
-
-
+document.getElementById("Button 4").innerText = "DrawMode - Hover";
+document.getElementById("Button 5").innerText = "DrawMode - Click";
 
 let divs = document.querySelectorAll(".row");
+let colorClick = false;
+let eraserClick = false;
 
-let colorClick = false
 document.getElementById("Button 1").addEventListener("click", colorClicked)
 function colorClicked() {
-    colorClick = true
-    if (colorClick = true) {
-        eraserClick = false
-        let changeBackgroundColor = e => { e.target.style.backgroundColor = "red"; }
-divs.forEach(div => {
-    div.addEventListener("mouseover", changeBackgroundColor);
-})
-    }
+    colorClick = true;
+    let colorValue = document.getElementById("favcolor").value;
+    changeBackgroundColor = e => { e.target.style.backgroundColor = colorValue; }
+    divs.forEach(div => {
+        div.removeEventListener(currentDrawMode, changeBackgroundColor);
+        div.addEventListener(mouseValue, changeBackgroundColor);
+    });
+    eraserClick = false;
 }
+
 let clearDivs = document.getElementById("Button 2")
 clearDivs.onclick = function() {location.reload(true)}
 
-let eraserClick = false
 document.getElementById("Button 3").addEventListener("click", eraserClicked)
 function eraserClicked() {
-    eraserClick = true
-    colorClick = false
+    eraserClick = true;
+    colorClick = false;
     changeBackgroundColor = e => { e.target.style.backgroundColor = "white"; }
     divs.forEach(div => {
-        div.addEventListener("mouseover", changeBackgroundColor)})
-    
+        div.removeEventListener(currentDrawMode, changeBackgroundColor);
+        div.addEventListener(mouseValue, changeBackgroundColor);
+    });
 }
-// function eraserClicked(e) {
-//     e.target.style.backgroundColor = "white";
-// }
-// function colorClicked(e) {
-//     e.target.style.backgroundColor = "red";
-// }
-// const changeBackgroundColor = e => { e.target.style.backgroundColor = "red"; }
-// divs.forEach(div => {
-//     div.addEventListener("mouseover", changeBackgroundColor);
-// })
 
+document.getElementById("Button 4").addEventListener("click", modifyDrawMode);
+document.getElementById("Button 5").addEventListener("click", modifyDrawModeClick);
 
+function modifyDrawMode() {
+    currentDrawMode = "mouseover";
+    mouseValue = "mouseover";
+    divs.forEach(div => {
+        div.removeEventListener("click", changeBackgroundColor);
+        div.addEventListener("mouseover", changeBackgroundColor);
+    });
+}
 
-let eventArray = ["mouseover", "click"]
+function modifyDrawModeClick() {
+    currentDrawMode = "click";
+    mouseValue = "click";
+    divs.forEach(div => {
+        div.removeEventListener("mouseover", changeBackgroundColor);
+        div.addEventListener("click", changeBackgroundColor);
+    });
+}
+
