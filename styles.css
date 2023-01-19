@@ -1,1 +1,43 @@
+.header {
+    display: block;
+        
+}
 
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+
+
+.grid {
+    display: flex;
+    
+}
+
+.column {
+    aspect-ratio: 1 / 1;
+    
+}
+
+.row {
+    width: 25px;
+    aspect-ratio: 1 / 1;
+    background: white;
+    text-align: center;
+    border-style: ridge;
+    border-width: 1px;
+    border-color: black;
+}
+
+.inner-div {
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: flex-start
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
