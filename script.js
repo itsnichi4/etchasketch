@@ -3,8 +3,8 @@ let currentDrawMode = "click";
 let changeBackgroundColor;
 let squaresNumber = prompt('Input the number of squares you want for your canvas(30-60)')
 
-if (squaresNumber>60) {alert("ERROR! I SAID MIN 30 MAX 60!")
-prompt('Input the number of squares you want for your canvas(1-60)')
+if (squaresNumber>=60 || 30>=squaresNumber) {alert("ERROR! I SAID MIN 30 MAX 60!")
+prompt('Input the number of squares you want for your canvas(30-60)')
 }
 
 let container = document.createElement('div');
