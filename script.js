@@ -8,9 +8,9 @@ main()
 
 function getRowsCount() {
     let squaresNumber = 0;
-    while (30 > squaresNumber || squaresNumber > 100) {
-        alert("ERROR! I SAID MIN 30 MAX 60!")
-        squaresNumber = prompt('Input the number of squares you want for your canvas(30-60)')
+    while (0 > squaresNumber || squaresNumber > 100) {
+        alert("ERROR! I SAID MIN 1 MAX 100!")
+        squaresNumber = prompt('Input the number of squares you want for your canvas(1-100)')
     }
 
     return squaresNumber;
