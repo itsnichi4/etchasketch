@@ -13,23 +13,21 @@
 
 .grid {
     display: flex;
-    max-width: 500px;
-    max-height: 500px;
+    width: 500px;
+    height: 500px;
+    outline: 3px red solid
 }
 
 .column {
-    aspect-ratio: 1 / 1;
+    flex-grow: 1
     
 }
 
 .row {
-    width: 10px;
     aspect-ratio: 1 / 1;
     background: white;
     text-align: center;
-    border-style: ridge;
-    border-width: 1px;
-    border-color: black;
+   border:1px solid grey;
 }
 
 .inner-div {
